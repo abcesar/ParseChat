@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		124308B3706A758BEC58A3D7 /* Pods_ParseChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587D71E54A8D94DF380B323A /* Pods_ParseChatUITests.framework */; };
 		3B88A6B6BE5F3A85FCCD9A9F /* Pods_ParseChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19019C3903C81C3A367A094D /* Pods_ParseChat.framework */; };
+		DB013A1521633457005D8298 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB013A1421633457005D8298 /* ChatCell.swift */; };
 		DB0186392163280D00A2FFFC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0186382163280D00A2FFFC /* LoginViewController.swift */; };
+		DB01863B21632FAC00A2FFFC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01863A21632FAC00A2FFFC /* ChatViewController.swift */; };
 		DB0B9CF32163260600FC7C85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B9CF22163260600FC7C85 /* AppDelegate.swift */; };
 		DB0B9CF52163260600FC7C85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B9CF42163260600FC7C85 /* ViewController.swift */; };
 		DB0B9CF82163260600FC7C85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB0B9CF62163260600FC7C85 /* Main.storyboard */; };
@@ -47,7 +49,9 @@
 		9D674CCC9ED2A0241B1E2345 /* Pods-ParseChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParseChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParseChat/Pods-ParseChat.debug.xcconfig"; sourceTree = "<group>"; };
 		AC3C1EFC0C257E2E36290989 /* Pods-ParseChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParseChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParseChatTests/Pods-ParseChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		AD1D4FFD0FF5357EA0779FFD /* Pods-ParseChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParseChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParseChatTests/Pods-ParseChatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DB013A1421633457005D8298 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		DB0186382163280D00A2FFFC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DB01863A21632FAC00A2FFFC /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		DB0B9CEF2163260600FC7C85 /* ParseChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParseChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB0B9CF22163260600FC7C85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB0B9CF42163260600FC7C85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 				DB0B9CFB2163260700FC7C85 /* LaunchScreen.storyboard */,
 				DB0B9CFE2163260700FC7C85 /* Info.plist */,
 				DB0186382163280D00A2FFFC /* LoginViewController.swift */,
+				DB01863A21632FAC00A2FFFC /* ChatViewController.swift */,
+				DB013A1421633457005D8298 /* ChatCell.swift */,
 			);
 			path = ParseChat;
 			sourceTree = "<group>";
@@ -398,6 +404,8 @@
 			files = (
 				DB0186392163280D00A2FFFC /* LoginViewController.swift in Sources */,
 				DB0B9CF52163260600FC7C85 /* ViewController.swift in Sources */,
+				DB01863B21632FAC00A2FFFC /* ChatViewController.swift in Sources */,
+				DB013A1521633457005D8298 /* ChatCell.swift in Sources */,
 				DB0B9CF32163260600FC7C85 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,7 +591,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.ParseChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -601,7 +609,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.ParseChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
