@@ -16,8 +16,11 @@ class ChatViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var chatMessageField: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -44,5 +47,9 @@ class ChatViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
+    
+    
+    
+    let usernamealertController = UIAlertController(title: "Error", message: "Username is taken", preferredStyle: .alert)
 
 }

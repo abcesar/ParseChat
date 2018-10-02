@@ -14,16 +14,18 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     
-    let usernamealertController = UIAlertController(title: "Error", message: "Username is taken", preferredStyle: .alert)
-    
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             // handle cancel response here. Doing nothing will dismiss the view.
+            
         }
+        
+        
         // add the cancel action to the alertController
         usernamealertController.addAction(cancelAction)
         
@@ -78,5 +80,6 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    let usernamealertController = UIAlertController(title: "Error", message: "Username is taken", preferredStyle: .alert)
 }

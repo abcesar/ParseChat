@@ -127,7 +127,6 @@
                     <connections>
                         <outlet property="chatMessageField" destination="Uzq-P5-7uZ" id="GBC-yk-EFw"/>
                         <outlet property="chatTableView" destination="2bA-bF-F7b" id="pSr-E3-okL"/>
-                        <outlet property="chattableView" destination="2bA-bF-F7b" id="F5f-Yi-IEh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vte-79-GBQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
