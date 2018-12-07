@@ -2,84 +2,89 @@
 //  LoginViewController.swift
 //  ParseChat
 //
-//  Created by Cesar Gutierrez on 10/1/18.
+//  Created by Cesar Gutierrez on 11/22/18.
 //  Copyright © 2018 Cesar Gutierrez. All rights reserved.
 //
 
 import UIKit
 import Parse
-class LoginViewController: UIViewController {
 
-    @IBOutlet weak var usernameField: UITextField!
+class LoginViewController: UIViewController {
     
-    @IBOutlet weak var passwordField: UITextField!
-    
-    
+    // UI, UX Outlet Variables
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            // handle cancel response here. Doing nothing will dismiss the view.
-            
-        }
-        
-        
-        // add the cancel action to the alertController
-        usernamealertController.addAction(cancelAction)
-        
-        // create an OK action
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            // handle response here.
-        }
-        // add the OK action to the alert controller
-        usernamealertController.addAction(OKAction)
     }
     
-    @IBAction func onSignIn(_ sender: Any) {
-        PFUser.logInWithUsername(inBackground: usernameField.text!, password: passwordField.text!) { (user: PFUser?,error: Error?) in
-            if user != nil{
-                print("You're Logged In")
-                
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            }
-        }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
-    @IBAction func onSignUp(_ sender: Any) {
+    // Event Handlers
+    @IBAction func onSignup(_ sender: Any) {
         let newUser = PFUser()
-        
-        newUser.username = usernameField.text
-        newUser.password = passwordField.text
-        
-        newUser.signUpInBackground { (success: Bool, error: Error?) in
-            if success{
-                print("Yay, created a user!")
-                
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            }
-            else{
-                print(error?.localizedDescription)
-                if error?._code == 202{
-                    print("User name is taken")
-                   
-                    UIApplication.shared.keyWindow?.rootViewController?.present(self.usernamealertController, animated: true) {
-                        // optional code for what happens after the alert controller has finished presenting
-                    }
-                }
+        newUser.username = usernameTextField.text!
+        newUser.password = passwordTextField.text!
+        newUser.signUpInBackground { (success, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                self.displaySignupErrorAlert()
+            } else {
+                self.displaySignupSuccessAlert()
+                //self.performSegue(withIdentifier: "LoginSegue", sender: nil)
             }
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
-    let usernamealertController = UIAlertController(title: "Error", message: "Username is taken", preferredStyle: .alert)
+    @IBAction func endEnteringCredentials(_ sender: Any) {
+        view.endEditing(true);
+    }
+    
+    
+    @IBAction func onLogin(_ sender: Any) {
+        let username = usernameTextField.text!
+        let password = passwordTextField.text!
+        PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
+            if (error != nil) {
+                self.displayLoginErrorAlert()
+            } else {
+                self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+            }
+        }
+    }
+    
+    func displayLoginErrorAlert() {
+        let alertController = UIAlertController(title: "Login Failed!", message: "Please enter a valid username and password combination.", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Try Again", style: .default)
+        alertController.addAction(dismissAction)
+        present(alertController, animated: true) {
+            self.usernameTextField.text = ""
+            self.passwordTextField.text = ""
+        }
+    }
+    
+    func displaySignupErrorAlert() {
+        let alertController = UIAlertController(title: "Signup Failed!", message: "That username is already taken. Please choose another one.", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Try Again", style: .default)
+        alertController.addAction(dismissAction)
+        present(alertController, animated: true) {
+            self.usernameTextField.text = ""
+            self.passwordTextField.text = ""
+        }
+    }
+    
+    func displaySignupSuccessAlert() {
+        let alertController = UIAlertController(title: "Signup Successful!", message: "New account created.", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Continue", style: .default) { (action) in
+            self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+        }
+        alertController.addAction(dismissAction)
+        present(alertController, animated: true) { }
+    }
+    
 }
